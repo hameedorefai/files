@@ -140,7 +140,7 @@ function initializeAccordions(courseId) {
 
 async function getFilesByType(courseId, type) {
     try {
-        const response = await fetch(`https://zamayl1.azurewebsites.net/api/files/course/${courseId}/type/${type}`);
+        const response = await fetch(`https://zplatform.azurewebsites.net/api/files/course/${courseId}/type/${type}`);
         if (response.status === 404) {
             const responseText = await response.text();
             if (responseText === "No files found for this course.") {
@@ -175,7 +175,7 @@ async function logUploadButtonClick(fileType) {
         message: `User Has Clicked On Upload File Button in category: ${categories[fileType]}`
     }
     try {
-        await fetch('https://zamayl1.azurewebsites.net/api/Log/loginfo', {
+        await fetch('https://zplatform.azurewebsites.net/api/Log/loginfo', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
