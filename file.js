@@ -14,7 +14,7 @@ async function getFileData() {
     const courseId = await getParam('id') || null;
     if (courseId) {
         try {
-            const response = await fetch('https://zmyl.azurewebsites.net/api/files/' + courseId);
+            const response = await fetch('https://zamayl.azurewebsites.net/api/files/' + courseId);
 
             if (!response.ok) {
                 // محاولة قراءة نص الرسالة من الخادم
@@ -368,8 +368,8 @@ async function sendVote(dataPost) {
         let response;
         if (dataPost.deleted) {
             const deleteUrl = dataPost.deleted === 'upVote'
-                ? `https://zmyl.azurewebsites.net/api/FileUpVote/${dataPost.fileId}/upvote`
-                : `https://zmyl.azurewebsites.net/api/FileDownVote/${dataPost.fileId}/downvote`;
+                ? `https://zamayl.azurewebsites.net/api/FileUpVote/${dataPost.fileId}/upvote`
+                : `https://zamayl.azurewebsites.net/api/FileDownVote/${dataPost.fileId}/downvote`;
 
             response = await fetch(deleteUrl, {
                 method: "DELETE",
@@ -385,8 +385,8 @@ async function sendVote(dataPost) {
         }
         if (dataPost.vote) {
             const postUrl = dataPost.vote === 'upVote'
-                ? `https://zmyl.azurewebsites.net/api/FileUpVote/${dataPost.fileId}/upvote`
-                : `https://zmyl.azurewebsites.net/api/FileDownVote/${dataPost.fileId}/downvote`;
+                ? `https://zamayl.azurewebsites.net/api/FileUpVote/${dataPost.fileId}/upvote`
+                : `https://zamayl.azurewebsites.net/api/FileDownVote/${dataPost.fileId}/downvote`;
 
             response = await fetch(postUrl, {
                 method: "POST",
@@ -407,7 +407,7 @@ let downvotes = 0;
 let upvotes = 0;
         
         try {
-            const response = await fetch(`https://zmyl.azurewebsites.net/api/FileDownVote/${dataPost.fileId}/downvotes/count`);
+            const response = await fetch(`https://zamayl.azurewebsites.net/api/FileDownVote/${dataPost.fileId}/downvotes/count`);
             if (!response.ok) {
                 return true;
             }
@@ -417,7 +417,7 @@ let upvotes = 0;
             throw new Error(error);
         }
         try {
-            const response = await fetch(`https://zmyl.azurewebsites.net/api/FileUpVote/${dataPost.fileId}/upvotes/count`);
+            const response = await fetch(`https://zamayl.azurewebsites.net/api/FileUpVote/${dataPost.fileId}/upvotes/count`);
             if (!response.ok) {
                 return true;
             }
@@ -454,6 +454,7 @@ function openPDFModal(pdfPath) {
     const PDFModal = new bootstrap.Modal(document.getElementById('pdfModal'));
     PDFModal.show();
 }
+
 
 
 
